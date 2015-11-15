@@ -1,0 +1,70 @@
+\documentclass{article}
+
+\usepackage{fullpage}  % Makes the text margins smaller
+\usepackage{graphicx} % To include figures
+\usepackage{fancyvrb} % Includes the \VerbatimInput command to read in code files
+
+\author{Cody Lieu, Yixin Lin}
+\title{COMPSCI 527 Homework 5}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1(a)}
+
+Points tracked well: 1, 3, 4, 5
+
+Points lost during tracking: 2
+
+Points tracked but don't correspond to fixed points in the world: 6
+
+Point 2 was lost during tracking, which is clearly not satisfactory because during reconstruction, that point cannot be found in the point cloud and the 3d information is lost.
+
+Point 6 was tracked but don't correspond to a fixed point in the world, which would be problematic in reconstruction because the point cloud would be constructed incorrectly.
+
+\section*{Problem 1(b)}
+
+The last frame in which all features are present is frame 5.
+
+\begin{center}
+\begin{tabular}{ ||c|c|c|| } 
+	\hline
+	Feature & cond(H) & $\sigma_min(H)$ \\ \hline
+ 	1 &3.19 &49.82 \\ 
+	2 &7.14 &0.14 \\
+	3 &5.06 &55.04 \\
+	4 &7.54 &41.91 \\
+	5 &3.45 &161.35 \\
+	6 &10.88 &11.20 \\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{Problem 1(c)}
+The $\sigma_min(H)$ of feature 2 is very close to 0.
+
+TODO: explain why
+
+\section*{Problem 1(d)}
+
+
+\begin{center}
+\begin{tabular}{ ||c|c|c|c|| } 
+	\hline
+				& Newton & gradient descent & grid \\ \hline
+	ssd evals 	& 169 & 837 & 5124\\
+
+\hline
+\end{tabular}
+\end{center}
+
+\section*{Problem 1(e)}
+
+TODO
+
+\section*{Problem 1(f)}
+
+The camera moved forward, since the tracking points look like they got closer (the image got slightly larger, and the points ``expanded'').
+
+
+\end{document}
