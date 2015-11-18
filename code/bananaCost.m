@@ -12,6 +12,10 @@ cost.b = b;
             error('if order is nonzero, x must be a column vector')
         end
 
+        x = double(x);
+        cost.a = double(cost.a);
+        cost.b = double(cost.b);
+
         point.x = x;
         point.y = (cost.a * - x(1, :)).^2 + cost.b * (x(2, :) - x(1, :).^2).^2;
 		

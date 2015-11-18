@@ -29,7 +29,7 @@ grid = gridMethod(from, to, pitch, verbose);
 figure(1)
 clf
 % xStar = NaN; % REPLACE NaN WITH THE POINT WHERE f REACHES ITS MINIMUM
-xStar = [0, 0];
+xStar = [a, a^2];
 [residual, rfrom, rto] = gridResidual(grid, cost, x0);
 showContours(residual', rfrom, pitch, rto, x0, 1);
 
