@@ -4,6 +4,7 @@
 \usepackage{graphicx} % To include figures
 \usepackage{fancyvrb} % Includes the \VerbatimInput command to read in code files
 \usepackage{amsmath}
+\DeclareGraphicsExtensions{.png}
 \renewcommand*{\arraystretch}{2}
 
 \author{Cody Lieu, Yixin Lin}
@@ -82,8 +83,8 @@ Gradient:
 Hessian:
 \[
 	\begin{bmatrix}
-		12bx_1^2-4bx_2+2 & -4bx\\
-		-4bx & 2b 
+		12bx_1^2-4bx_2+2 & -4bx_1\\
+		-4bx_1 & 2b 
 	\end{bmatrix}
 \]
 \end{center}
@@ -101,5 +102,11 @@ $\mathbf{x^{*}} = $
 
 $f(\mathbf{x^{*}}) = 0$
 	
+
+\section*{Problem 2(c)}
+
+\VerbatimInput[fontsize=\small,fontshape=n,xleftmargin=15mm]{code/bananaCost.m}
+
+\includegraphics[scale=0.35]{code/2c.png}
 
 \end{document}

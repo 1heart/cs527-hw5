@@ -4,7 +4,7 @@ x0 = [-1; -1];
 verbose = true;
 
 % UNCOMMENT THE FOLLOWING LINE ONCE YOUR CODE IS READY
-% cost = bananaCost(a, b);
+cost = bananaCost(a, b);
 
 % Optimization parameters
 delta = eps ^ (1/4);    % Stop searching when the step gets smaller than this (in pixels)...
@@ -22,21 +22,22 @@ descent = descentMethod(alpha, delta, epsilon, maxDeltaX, maxIter, verbose);
 grid = gridMethod(from, to, pitch, verbose);
 
 % UNCOMMENT THE FOLLOWING LINES ONCE YOUR CODE IS READY
-% [xN, stateN] = minimize(cost, Newton, x0);
-% [xD, stateD] = minimize(cost, descent, x0);
-% [xG, stateG] = minimize(cost, grid, x0);
-% 
-% figure(1)
-% clf
+[xN, stateN] = minimize(cost, Newton, x0);
+[xD, stateD] = minimize(cost, descent, x0);
+[xG, stateG] = minimize(cost, grid, x0);
+
+figure(1)
+clf
 % xStar = NaN; % REPLACE NaN WITH THE POINT WHERE f REACHES ITS MINIMUM
-% [residual, rfrom, rto] = gridResidual(grid, cost, x0);
-% showContours(residual', rfrom, pitch, rto, x0, 1);
-% 
-% hN = showPath(stateN.history, xStar, 'r');
-% hD = showPath(stateD.history, xStar, 'g');
-% hG = showPath(stateG.history, xStar, 'b');
-% legend([hN, hD, hG], ...
-%     sprintf('Newton (%d evaluations)', length(stateN.history)), ...
-%     sprintf('gradient descent (%d evaluations)', length(stateD.history)), ...
-%     sprintf('grid search (%d evaluations)', length(stateG.history)), ...
-%     'Location', 'NW')
+xStar = [0, 0];
+[residual, rfrom, rto] = gridResidual(grid, cost, x0);
+showContours(residual', rfrom, pitch, rto, x0, 1);
+
+hN = showPath(stateN.history, xStar, 'r');
+hD = showPath(stateD.history, xStar, 'g');
+hG = showPath(stateG.history, xStar, 'b');
+legend([hN, hD, hG], ...
+    sprintf('Newton (%d evaluations)', length(stateN.history)), ...
+    sprintf('gradient descent (%d evaluations)', length(stateD.history)), ...
+    sprintf('grid search (%d evaluations)', length(stateG.history)), ...
+    'Location', 'NW')
