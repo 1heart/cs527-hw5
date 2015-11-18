@@ -3,6 +3,8 @@
 \usepackage{fullpage}  % Makes the text margins smaller
 \usepackage{graphicx} % To include figures
 \usepackage{fancyvrb} % Includes the \VerbatimInput command to read in code files
+\usepackage{amsmath}
+\renewcommand*{\arraystretch}{2}
 
 \author{Cody Lieu, Yixin Lin}
 \title{COMPSCI 527 Homework 5}
@@ -66,5 +68,38 @@ TODO
 
 The camera moved forward, since the tracking points look like they got closer (the image got slightly larger, and the points ``expanded'').
 
+\section*{Problem 2(a)}
+
+\begin{center}
+Gradient:
+\[
+	\begin{bmatrix}
+		-2a + 4bx_1^3 -4bx_1x_2 + 2x_1\\ 
+		2b(x_2-x_1^2)
+	\end{bmatrix}
+\]
+
+Hessian:
+\[
+	\begin{bmatrix}
+		12bx_1^2-4bx_2+2 & -4bx\\
+		-4bx & 2b 
+	\end{bmatrix}
+\]
+\end{center}
+
+\section*{Problem 2(b)}
+
+
+$\mathbf{x^{*}} = $
+\[
+	\begin{bmatrix}
+		a \\
+		a^2
+	\end{bmatrix}
+\]
+
+$f(\mathbf{x^{*}}) = 0$
+	
 
 \end{document}
