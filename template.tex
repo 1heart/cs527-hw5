@@ -21,9 +21,9 @@ Points lost during tracking: 2
 
 Points tracked but don't correspond to fixed points in the world: 6
 
-Point 2 was lost during tracking, which is clearly not satisfactory because during reconstruction, that point cannot be found in the point cloud and the 3d information is lost.
+Point 2 was lost during tracking, which is clearly not satisfactory because during reconstruction, that 3-d information that corresponds to that point is lost and cannot be used to generated the point cloud.
 
-Point 6 was tracked but don't correspond to a fixed point in the world, which would be problematic in reconstruction because the point cloud would be constructed incorrectly.
+Point 6 was tracked but don't correspond to a fixed point in the world, which would be problematic in reconstruction because the point would be constructed using incorrect information, and the resulting point in the point cloud would not represent an actual fixed point in the real world.
 
 \section*{Problem 1(b)}
 
@@ -63,7 +63,17 @@ TODO: explain why
 
 \section*{Problem 1(e)}
 
-TODO
+For point 1, all three methods tracked it fairly well (thought the grid method was off by a bit more).
+
+For point 2, interestingly the Newton method failed to track it while the gradient descent method did well. Also, the grid method did not fail to track it but the results are clearly incorrect.
+
+For point 3 and 5, it was tracked well by all three methods (though the grid method was again off by more than the other two).
+
+For point 4, it was tracked well by all three methods.
+
+For point 6, it was tracked by all three similarly (grid method was again off by more than the other two) but did not correspond to a fixed point in space.
+
+If resolution of the grid was closer to the resolution of the image (the pitch was smaller), then the grid method would have been more effective (but also more costly).
 
 \section*{Problem 1(f)}
 
@@ -115,15 +125,17 @@ The grid search method failed to converge in the maximum number of iterations al
 
 \section*{Problem 2(e)}
 
-Newton's method took the fewest iterations (4 iterations).
+Newton's method took the fewest iterations (9 iterations).
 
 \section*{Problem 2(f)}
 
-TODO
+No, individual iterations for Newton's method are the most expensive, and the iterations for the grid method are the least expensive.
 
 \section*{Problem 2(g)}
 
-TODO
+The grid method goes through every point in the grid it lays out (the density of which depends on the pitch), and finds the minimum point within those. It updates a new minimum every time it finds a new point that's smaller than the previous minimum. This means that the path that the grid method travels are the ``current minimums'', which makes perfect sense since it traverses from [-2, -2] to [3, 3] at a pitch of 0.1, trying x values before y values. 
+
+Thus, the points look like they're going down the gradient, because it only updates the current minimum when it finds a smaller minimum. Also, it looks like it travels straight line segments, since the only points it considers are those that lie on the grid it lays out. Finally, it goes right and then up, since that's the order in which it considers the points (points with ascending x values for each ascending y value).
 
 \section*{Problem 2(h)}
 

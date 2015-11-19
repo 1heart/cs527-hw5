@@ -17,8 +17,8 @@ cost.b = b;
         cost.b = double(cost.b);
 
         point.x = x;
-        point.y = (cost.a * - x(1, :)).^2 + cost.b * (x(2, :) - x(1, :).^2).^2;
-		
+        point.y = (cost.a - x(1,:)).^2 + cost.b * (x(2,:) - x(1,:).^2).^2;
+
 		if order>=1
 			point.g(1,1) = -2 * cost.a + 4 * cost.b * x(1)^3 - 4 * cost.b * x(1) * x(2) + 2 * x(1);
 			point.g(2,1) = 2 * cost.b * (x(2) - x(1)^2);
