@@ -21,7 +21,7 @@ Points lost during tracking: 2
 
 Points tracked but don't correspond to fixed points in the world: 6
 
-Point 2 was lost during tracking, which is clearly not satisfactory because during reconstruction, that 3-d information that corresponds to that point is lost and cannot be used to generated the point cloud.
+Point 2 was lost during tracking, which is clearly not satisfactory because during reconstruction, that 3-d information that corresponds to that point is lost and cannot be used to generate the point cloud.
 
 Point 6 was tracked but don't correspond to a fixed point in the world, which would be problematic in reconstruction because the point would be constructed using incorrect information, and the resulting point in the point cloud would not represent an actual fixed point in the real world.
 
@@ -44,9 +44,7 @@ The last frame in which all features are present is frame 5.
 \end{center}
 
 \section*{Problem 1(c)}
-The $\sigma_{min}(H)$ of feature 2 is very close to 0.
-
-TODO: explain why
+The $\sigma_{min}(H)$ of feature 2 is very close to 0. This means that even if the condition number is ``reasonable'', i.e. not very large, it doesn't matter; this is still a degenerate case of the matrix (the matrix is close to being rank-deficient), which corresponds to an occurence of the aperture problem.
 
 \section*{Problem 1(d)}
 
@@ -63,6 +61,10 @@ TODO: explain why
 
 \section*{Problem 1(e)}
 
+In general, the grid method did worse than the others (off by at least a little bit), while Newton's method and gradient descent worked fairly well. However, Newton's method did fail for a point.
+
+If resolution of the grid was closer to the resolution of the image (the pitch was smaller), then the grid method would have been more effective (but also more costly).
+
 For point 1, all three methods tracked it fairly well (thought the grid method was off by a bit more).
 
 For point 2, interestingly the Newton method failed to track it while the gradient descent method did well. Also, the grid method did not fail to track it but the results are clearly incorrect.
@@ -73,7 +75,6 @@ For point 4, it was tracked well by all three methods.
 
 For point 6, it was tracked by all three similarly (grid method was again off by more than the other two) but did not correspond to a fixed point in space.
 
-If resolution of the grid was closer to the resolution of the image (the pitch was smaller), then the grid method would have been more effective (but also more costly).
 
 \section*{Problem 1(f)}
 
